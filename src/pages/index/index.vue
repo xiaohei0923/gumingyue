@@ -1,126 +1,107 @@
 <template>
-  <div @click="clickHandle">
-
-    <div class="userinfo" @click="bindViewTap">
-      <img class="userinfo-avatar" v-if="userInfo.avatarUrl" :src="userInfo.avatarUrl" background-size="cover" />
-      <img class="userinfo-avatar" src="/static/images/user.png" background-size="cover" />
-
-      <div class="userinfo-nickname">
-        <card :text="userInfo.nickName"></card>
+  <div class="home">
+    <div class="hello">
+      <div class="clock">
+        <clock />
       </div>
-    </div>
-
-    <div class="usermotto">
-      <div class="user-motto">
-        <card :text="motto"></card>
+      <div class="name">
+        <span
+          >Hi,
+          <open-data type="userNickName"></open-data>
+        </span>
       </div>
-    </div>
-
-    <form class="form-container">
-      <input type="text" class="form-control" :value="motto" placeholder="v-model" />
-      <input type="text" class="form-control" v-model="motto" placeholder="v-model" />
-      <input type="text" class="form-control" v-model.lazy="motto" placeholder="v-model.lazy" />
-    </form>
-
-    <a href="/pages/counter/main" class="counter">去往Vuex示例页面</a>
-
-    <div class="all">
-        <div class="left">
+      <div class="avatar">
+        <div class="img">
+          <!-- <img
+            src="https://img1.baidu.com/it/u=2256533945,1034229872&fm=26&fmt=auto&gp=0.jpg"
+            alt=""
+          /> -->
+          <open-data type="userAvatarUrl"></open-data>
         </div>
-        <div class="right">
-        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import card from '@/components/card'
-
+import clock from "@/components/clock";
 export default {
-  data () {
+  components: { clock },
+  data() {
     return {
-      motto: '',
-      userInfo: {
-        nickName: 'mpvue',
-        avatarUrl: 'http://mpvue.com/assets/logo.png'
-      }
-    }
+      userInfo: null,
+    };
   },
 
-  components: {
-    card
-  },
+  methods: {},
 
-  methods: {
-    bindViewTap () {
-      const url = '../logs/main'
-      if (mpvuePlatform === 'wx') {
-        mpvue.switchTab({ url })
-      } else {
-        mpvue.navigateTo({ url })
-      }
-    },
-    clickHandle (ev) {
-      console.log('clickHandle:', ev)
-      // throw {message: 'custom test'}
-    }
-  },
-
-  created () {
-    // let app = getApp()
-  }
-}
+  created() {},
+};
 </script>
 
-<style scoped>
-.userinfo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+<style lang="less" scoped>
+@keyframes ripple {
+  0% {
+    opacity: 0.35;
+    width: 100px;
+    height: 100px;
+  }
+  50% {
+    opacity: 0.2;
+    width: 120px;
+    height: 120px;
+  }
+  100% {
+    opacity: 0.35;
+    width: 100px;
+    height: 100px;
+  }
 }
-
-.userinfo-avatar {
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
-  border-radius: 50%;
-}
-
-.userinfo-nickname {
-  color: #aaa;
-}
-
-.usermotto {
-  margin-top: 150px;
-}
-
-.form-control {
-  display: block;
-  padding: 0 12px;
-  margin-bottom: 5px;
-  border: 1px solid #ccc;
-}
-.all{
-  width:7.5rem;
-  height:1rem;
-  background-color:blue;
-}
-.all:after{
-  display:block;
-  content:'';
-  clear:both;
-}
-.left{
-  float:left;
-  width:3rem;
-  height:1rem;
-  background-color:red;
-}
-
-.right{    
-  float:left;
-  width:4.5rem;
-  height:1rem;
-  background-color:green;
+.home {
+  .hello {
+    padding-top: 60px;
+    background: #0096ff;
+    position: relative;
+    overflow: hidden;
+    .clock {
+      position: absolute;
+      left: 0;
+      top: 0;
+      transform: translate(0,-20%);
+    }
+    .name {
+      padding: 30rpx;
+      color: #fff;
+      font-size: 20px;
+      position: absolute
+    }
+    .avatar {
+      height: 200px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      &::before {
+        content: "";
+        // width: 100px;
+        // height: 100px;
+        border-radius: 50%;
+        background-color: #fff6;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 9;
+        animation: ripple infinite 2s ease;
+      }
+      .img {
+        height: 90px;
+        width: 90px;
+        border-radius: 50%;
+        overflow: hidden;
+        z-index: 99;
+      }
+    }
+  }
 }
 </style>

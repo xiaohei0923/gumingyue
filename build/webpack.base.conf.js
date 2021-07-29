@@ -10,26 +10,23 @@ var glob = require('glob')
 var CopyWebpackPlugin = require('copy-webpack-plugin')
 var relative = require('relative')
 
-const MpvueEntry = require('mpvue-entry')
-
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
 }
 
-const entry = MpvueEntry.getEntry('./src/router.js')
-// function getEntry (rootSrc) {
-//   var map = {};
-//   glob.sync(rootSrc + '/pages/**/main.js')
-//   .forEach(file => {
-//     var key = relative(rootSrc, file).replace('.js', '');
-//     map[key] = file;
-//   })
-//    return map;
-// }
+function getEntry (rootSrc) {
+  var map = {};
+  glob.sync(rootSrc + '/pages/**/main.js')
+  .forEach(file => {
+    var key = relative(rootSrc, file).replace('.js', '');
+    map[key] = file;
+  })
+   return map;
+}
 
-// const appEntry = { app: resolve('./src/main.js') }
-// const pagesEntry = getEntry(resolve('./src'), 'pages/**/main.js')
-// const entry = Object.assign({}, appEntry, pagesEntry)
+const appEntry = { app: resolve('./src/main.js') }
+const pagesEntry = getEntry(resolve('./src'), 'pages/**/main.js')
+const entry = Object.assign({}, appEntry, pagesEntry)
 
 let baseWebpackConfig = {
   // 如果要自定义生成的 dist 目录里面的文件路径，
@@ -57,15 +54,19 @@ let baseWebpackConfig = {
   },
   module: {
     rules: [
+      // {
+      //   test: /\.(js|vue)$/,
+      //   loader: 'eslint-loader',
+      //   enforce: 'pre',
+      //   include: [resolve('src'), resolve('test')],
+      //   options: {
+      //     formatter: require('eslint-friendly-formatter')
+      //   }
+      // },
       {
-        test: /\.(js|vue)$/,
-        loader: 'eslint-loader',
-        enforce: 'pre',
-        include: [resolve('src'), resolve('test')],
-        options: {
-          formatter: require('eslint-friendly-formatter')
-        }
-      },
+        test: /\.less$/,
+        loader: "style-loader!css-loader!less-loader"
+     },
       {
         test: /\.vue$/,
         loader: 'mpvue-loader',
@@ -115,7 +116,6 @@ let baseWebpackConfig = {
       'mpvuePlatform': 'global.mpvuePlatform'
     }),
     new MpvuePlugin(),
-    new MpvueEntry(),
     new CopyWebpackPlugin([{
       from: '**/*.json',
       to: ''
