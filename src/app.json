@@ -1,36 +1,26 @@
 {
   "pages": [
-    "pages/index/main"
+    "pages/home/main",
+    "pages/clock/main"
   ],
   "window": {
-    "navigationStyle":"custom",
+    "navigationStyle": "default",
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "故明月",
     "navigationBarTextStyle": "black"
   },
   "usingComponents": {
-      "van-icon": "/static/vant/icon/index"
+    "van-icon": "/static/vant/icon/index",
+    "kugou-play": "plugin://kugouPlayer/kugou-play"
   },
-  "tabBar_off": {
-    "color": "#999",
-    "backgroundColor": "#fafafa",
-    "selectedColor": "#333",
-    "borderStyle": "white",
-
-    "list": [{
-      "text": "首页",
-      "pagePath": "pages/index/main",
-      "iconPath": "static/tabs/home.png",
-      "selectedIconPath": "static/tabs/home-active.png"
-    }],
-
-    "items": [{
-      "name": "首页",
-      "pagePath": "pages/index/main",
-      "icon": "static/tabs/home.png",
-      "activeIcon": "static/tabs/home-active.png"
-    }],
-    "position": "bottom"
-  }
+  "plugins": {
+    "kugouPlayer": {
+      "version": "1.0.12",
+      "provider": "wx4f38007b839da9d3"
+    }
+  },
+  "navigateToMiniProgramAppIdList": [
+    "wx4f38007b839da9d3"
+  ]
 }

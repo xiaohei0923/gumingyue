@@ -156,7 +156,7 @@ export default {
 #clock {
   position: relative;
   height: 50vh;
-  background: #efefef;
+  /* background: #efefef; */
   font-size: 3vw;
   line-height: 0.6vw;
 }
@@ -177,7 +177,7 @@ export default {
   width: 80px;
   text-align: right;
   transition: all 1000ms;
-  color: #efefef;
+  color: #ddd;
   padding-right: 0.3vw;
   box-sizing: border-box;
 }
