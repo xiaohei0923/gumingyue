@@ -57,7 +57,9 @@ export default {
     },
   },
 
-  created() {},
+  created() {
+    console.log(this.$palyer,'paly');
+  },
 };
 </script>
 
