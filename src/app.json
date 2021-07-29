@@ -6,8 +6,11 @@
     "navigationStyle":"custom",
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
+    "navigationBarTitleText": "故明月",
     "navigationBarTextStyle": "black"
+  },
+  "usingComponents": {
+      "van-icon": "/static/vant/icon/index"
   },
   "tabBar_off": {
     "color": "#999",

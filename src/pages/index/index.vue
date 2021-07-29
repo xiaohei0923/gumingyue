@@ -20,6 +20,13 @@
         </div>
       </div>
     </div>
+    <div class="tabs">
+      <div class="tabs-main">
+        <div class="tabs-item" v-for="(v, i) in tabs" :key="i">
+          <van-icon :name="v.icon" />
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -30,6 +37,12 @@ export default {
   data() {
     return {
       userInfo: null,
+      tabs: [
+        { name: "", icon: "wap-home" },
+        { name: "", icon: "like" },
+        { name: "", icon: "star" },
+        { name: "", icon: "more" },
+      ],
     };
   },
 
@@ -67,13 +80,13 @@ export default {
       position: absolute;
       left: 0;
       top: 0;
-      transform: translate(0,-20%);
+      transform: translate(0, -20%);
     }
     .name {
       padding: 30rpx;
       color: #fff;
       font-size: 20px;
-      position: absolute
+      position: absolute;
     }
     .avatar {
       height: 200px;
@@ -100,6 +113,40 @@ export default {
         border-radius: 50%;
         overflow: hidden;
         z-index: 99;
+      }
+    }
+  }
+  .tabs {
+    height: 50px;
+    position: relative;
+    .tabs-main {
+      position: absolute;
+      height: 80px;
+      bottom: 0;
+      width: 100vw;
+      display: flex;
+      .tabs-item{
+        width: 25%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 16vw;
+        color: #1685a9;
+        van-icon{
+          position: relative;
+          &::before{
+            position: absolute;
+            content: '';
+            width: 10vw;
+            height: 1vw;
+            border-radius: 50%;
+            background-color: #ddd;
+            bottom: -1vw;
+            left: 50%;
+            transform: translate(-50%);
+            z-index: 1;
+          }
+        }
       }
     }
   }
