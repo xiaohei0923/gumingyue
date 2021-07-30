@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/home/main",
+    "pages/showImage/main",
     "pages/clock/main"
   ],
   "window": {
@@ -12,6 +13,9 @@
   },
   "usingComponents": {
     "van-icon": "/static/vant/icon/index",
+    "van-popup": "/static/vant/popup/index",
+    "van-overlay": "/static/vant/overlay/index",
+    "van-transition": "/static/vant/transition/index",
     "kugou-play": "plugin://kugouPlayer/kugou-play"
   },
   "plugins": {

@@ -10,7 +10,7 @@ kugouPlayer.player.initPlayer({
 
 Vue.config.productionTip = false
 App.mpType = 'app'
-Vue.prototype.$palyer=kugouPlayer.player //全局播放器
+Vue.prototype.$player=kugouPlayer.player //全局播放器
 
 const app = new Vue(App)
 app.$mount()

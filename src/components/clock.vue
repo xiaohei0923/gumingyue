@@ -167,7 +167,8 @@ export default {
   top: 50%;
   transform: translate(-50%, -50%);
   border-radius: 50%;
-  box-shadow: 0 0 0.3vw 0.3vw #ccc;
+  box-shadow: 0 0 0.3vw 0.3vw #8c5a2e66;
+  background-color: #522421;
 }
 
 #clock > div > span {
@@ -177,18 +178,19 @@ export default {
   width: 80px;
   text-align: right;
   transition: all 1000ms;
-  color: #ddd;
+  color: #8c5a2e;
   padding-right: 0.3vw;
   box-sizing: border-box;
 }
 
 #clock > div > span.active {
-  color: #000;
+  color: gold;
 }
 
 .month {
   width: 40vw;
   height: 40vw;
+  z-index: 9;
 }
 
 .month > span {
@@ -198,6 +200,7 @@ export default {
 .day {
   width: 80vw;
   height: 80vw;
+  z-index: 8;
 }
 
 .day > span {
@@ -207,6 +210,7 @@ export default {
 .hour {
   width: 120vw;
   height: 120vw;
+  z-index: 7;
 }
 
 .hour > span {
@@ -216,6 +220,7 @@ export default {
 .minute {
   width: 160vw;
   height: 160vw;
+  z-index:6;
 }
 
 .minute > span {
@@ -225,6 +230,7 @@ export default {
 .second {
   width: 200vw;
   height: 200vw;
+  z-index: 5;
 }
 
 .second > span {

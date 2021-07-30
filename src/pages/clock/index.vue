@@ -17,7 +17,7 @@ export default {
   width: 100vw;
   box-sizing: border-box;
   overflow: hidden;
-  background-color: #efefef;
+  background-color: #b3b372;
   position: relative;
   .main{
     width: 100vw;

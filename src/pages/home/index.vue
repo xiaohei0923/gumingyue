@@ -28,11 +28,19 @@
         </div>
       </div>
     </div>
-    <div class="main" style="height:200vh;background:#fff"></div>
+    <div class="showImage">
+      <div class="item" v-for="(v,i) in toImage" :key='i' @click="()=>to(`../showImage/main?url=${v.url}`)">
+        <span>{{v.name}}</span>
+      </div>
+
+    </div>
   </div>
 </template>
 
 <script>
+import dtm from "../../../static/images/dtm.jpg";
+import jkm from "../../../static/images/jkm.jpg";
+import qp from "../../../static/images/qp.jpg";
 export default {
   data() {
     return {
@@ -45,9 +53,13 @@ export default {
           url: "plugin://kugouPlayer/search-page?keyword=白月光",
         },
         { name: "", icon: "clock", color: "#1685a9", url: "../clock/main" },
-        { name: "", icon: "star", color: "#1685a9" },
+        { name: "", icon: "photo", color: "#1685a9" , url: `../showImage/main` },
         { name: "", icon: "more", color: "#1685a9" },
       ],
+      toImage:[
+        {name:'健康码',url:jkm},
+        {name:'去乘车-地铁',url:dtm},
+      ]
     };
   },
 
@@ -56,9 +68,14 @@ export default {
       url && mpvue.navigateTo({ url });
     },
   },
-
+  onShareAppMessage(){
+    return{
+      title:"故明月",
+      path:"/pages/home/main"// 分享的页面路径，一般设置首页
+    }
+  },
   created() {
-    console.log(this.$palyer,'paly');
+    // console.log(this.$player,'paly');
   },
 };
 </script>
@@ -127,7 +144,7 @@ export default {
     }
   }
   .tabs {
-    height: 50px;
+    height: 40px;
     position: relative;
     background-color: #fff;
     .tabs-main {
@@ -168,5 +185,21 @@ export default {
   // background-size: cover;
   background-size: 120% auto;
   background-position: center top;
+}
+.showImage{
+  background-color: #fff;
+  padding: 0 20px 20px 0;
+  margin-left: 20px;
+  margin-top: 10vh;
+  border-left: 1px solid #716766;
+  .item{
+    background-color: #716766;
+    box-shadow: 2px 5px 5px 5px #71676666;
+    color: #fff;
+    padding: 20px 10px;
+    margin-bottom: 20px;
+    border-radius: 0 100vw 100vw 0;
+    margin-left: 2px;
+  }
 }
 </style>
