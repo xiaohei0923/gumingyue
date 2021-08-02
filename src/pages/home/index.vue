@@ -24,6 +24,7 @@
             :name="v.icon"
             :style="{ color: v.color }"
             @click="() => to(v.url)"
+            :info='v.info'
           />
         </div>
       </div>
@@ -32,13 +33,11 @@
       <div class="item" v-for="(v,i) in toImage" :key='i' @click="()=>to(`../showImage/main?url=${v.url}`)">
         <span>{{v.name}}</span>
       </div>
-
     </div>
   </div>
 </template>
 
 <script>
-import dtm from "../../../static/images/dtm.jpg";
 import jkm from "../../../static/images/jkm.jpg";
 import qp from "../../../static/images/qp.jpg";
 export default {
@@ -53,12 +52,11 @@ export default {
           url: "plugin://kugouPlayer/search-page?keyword=白月光",
         },
         { name: "", icon: "clock", color: "#1685a9", url: "../clock/main" },
-        { name: "", icon: "photo", color: "#1685a9" , url: `../showImage/main` },
-        { name: "", icon: "more", color: "#1685a9" },
+        { name: "", icon: "photo",info:'!', color: "#1685a9" , url: `../showImage/main` },
+        { name: "", icon: "more", color: "#1685a9"},
       ],
       toImage:[
         {name:'健康码',url:jkm},
-        {name:'去乘车-地铁',url:dtm},
       ]
     };
   },
@@ -71,7 +69,7 @@ export default {
   onShareAppMessage(){
     return{
       title:"故明月",
-      path:"/pages/home/main"// 分享的页面路径，一般设置首页
+      path:"/pages/home/main"
     }
   },
   created() {

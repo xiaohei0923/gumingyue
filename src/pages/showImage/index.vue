@@ -24,6 +24,7 @@
             (url = v.url), (show = true);
           }
         "
+        :style='{width:v.name.length*10+"%"}'
       >
         <span>{{ v.name }}</span>
       </div>
@@ -32,7 +33,6 @@
 </template>
 
 <script>
-import dtm from "../../../static/images/dtm.jpg";
 import jkm from "../../../static/images/jkm.jpg";
 import qp from "../../../static/images/qp.jpg";
 export default {
@@ -41,8 +41,7 @@ export default {
       show: false,
       url: '',
       list: [
-        { name: "老婆", url: qp },
-        { name: "乘车码-地铁", url: dtm },
+        { name: "mn", url: qp },
         { name: "健康码", url: jkm },
       ],
     };
@@ -67,10 +66,13 @@ export default {
     padding-top: 10vh;
     padding: 10vh 10px 10vh;
     .item {
-      background-color: #fff;
-      padding: 10px;
+      max-width: 90%;
+      background-color: #716766;
+      box-shadow: 2px 5px 5px 5px #71676666;
+      color: #Fff;
+      border-radius: 0 100vw 100vw 0;
+      padding: 20px 10px;
       margin-bottom: 20px;
-      border-radius: 2px;
     }
   }
 }
